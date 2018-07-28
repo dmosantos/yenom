@@ -21,15 +21,13 @@ nav {
 }
 
 /* SECTION: Lançamentos */
-.section-lancamentos {
-}
 .section-lancamentos header {
     display: flex;
     border-bottom: 1px solid #ddd;
 }
-.section-lancamentos header h4 {
+.section-lancamentos header h1 {
     flex-grow: 1;
-    font-size: 22px;
+    font-size: 1.5rem;
     margin: 0;
     padding: 20px;
     text-align: center;
@@ -51,6 +49,12 @@ nav {
     line-height: 20px;
     margin: 0 auto;
 }
+.lancamento-realizado {
+    background: #e8f5e9 ;
+}
+.lancamento-incompleto {
+    opacity: .5;
+}
 .lancamento-label {
     flex-grow: 1;
     padding: 10px 10px 10px 15px;
@@ -60,12 +64,15 @@ nav {
     padding: 10px 15px 10px 10px;
     white-space: nowrap;
 }
+.lancamento-valor strong {
+    font-weight: 700;
+}
 .lancamento-check {
     align-items: center;
     border-left: 1px solid #ddd;
     cursor: pointer;
     display: flex;
-    padding: 10px;
+    padding: 10px 20px;
 }
 .lancamento-check [type="checkbox"]+span:not(.lever) {
     margin: -3px 0 -2px 0;
@@ -97,22 +104,72 @@ nav {
 
 .lancamentos-saldo {
     border-bottom: 1px solid #ddd;
+}
+.lancamentos-saldo th,
+.lancamentos-saldo td {
+    font-size: .8rem;
+    padding: 5px 2px;
+    text-align: right;
+    white-space: nowrap;
+}
+.lancamentos-saldo th:first-child,
+.lancamentos-saldo td:first-child {
+    padding-left: 15px;
+}
+.lancamentos-saldo th:last-child,
+.lancamentos-saldo td:last-child {
+    padding-right: 15px;
+}
+.lancamentos-saldo th {
+    width: 1%;
+}
+.lancamentos-saldo thead td,
+.lancamentos-saldo thead th {
+    background: #efefef;
+    font-weight: bold;
+}
+.lancamentos-saldo thead tr {
+    border-color: #ddd;
+}
+.lancamentos-saldo tbody tr {
+    border-bottom: 0 none;
+}
+
+.lancamentos-controles {
+    background: #efefef;
+    border-bottom: 1px solid #ddd;
     display: flex;
-    margin: 0;
-    padding: 10px 15px;
+    padding: 0 15px;
 }
-.lancamentos-saldo span {
+.lancamentos-controles h2 {
     flex-grow: 1;
-    text-align: center;
+    font-size: 1rem;
+    font-weight: 700;
+    line-height: 18px;
+    margin: 0;
+    padding: 10px 15px 10px 0;
+    text-transform: uppercase;
 }
-.lancamentos-saldo span strong {
-    display: block;
+.lancamentos-controles a {
+    align-items: center;
+    display: flex;
 }
 
-
-
-
-
-
-
-
+/* Novio Lançamento */
+.section-novo-lancamentos h1 {
+    font-size: 1.5rem;
+}
+.section-novo-lancamentos {
+}
+.inline-radiochecks {
+    /*margin-bottom: 1rem;
+    margin-top: 1rem;*/
+}
+.inline-radiochecks > div {
+    align-items: center;
+    display: flex;
+    height: 3rem;
+}
+.inline-radiochecks > div label {
+    padding-right: 2rem;
+}
