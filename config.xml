@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<widget
+    xmlns="http://www.w3.org/ns/widgets"
+    xmlns:gap="http://phonegap.com/ns/1.0"
+    id="org.diegomarques.yenom"
+    version="1.0.0">
+
+    <name>Yenom - Contas a Pagar e Receber</name>
+    <description>Controle de contas a pagar e a receber</description>
+    <author href="http://diegomarques.eti.br" email="dmosantos@gmail.com">Diego Marques</author>
+    <icon src="icon.png" />
+
+    <preference name="orientation" value="portrait" />
+    <preference name="fullscreen" value="true" />
+    <pataform name="android" />
+
+</widget>

@@ -1,0 +1,118 @@
+/*
+#3d6020 - Verde
+*/
+
+/* APP Header */
+nav {
+    /*background-color: #0a508c;*/
+}
+.brand-logo img {
+    display: block;
+    height: 30px;
+    margin-top: 13px;
+}
+
+/* Lista de Lançamentos */
+.section-lancamentos .collection .collection-item.avatar {
+    min-height: inherit;
+}
+.section-lancamentos [type="checkbox"]+span:not(.lever) {
+    padding-left: 20px;
+}
+
+/* SECTION: Lançamentos */
+.section-lancamentos {
+}
+.section-lancamentos header {
+    display: flex;
+    border-bottom: 1px solid #ddd;
+}
+.section-lancamentos header h4 {
+    flex-grow: 1;
+    font-size: 22px;
+    margin: 0;
+    padding: 20px;
+    text-align: center;
+}
+.section-lancamentos header a {
+    align-items: center;
+    color: #000;
+    display: flex;
+    padding: 20px;
+}
+.section-lancamentos ul {
+    margin: 0;
+}
+.section-lancamentos li {
+    border-bottom: 1px solid #ddd;
+}
+.section-lancamentos li p {
+    display: flex;
+    line-height: 20px;
+    margin: 0 auto;
+}
+.lancamento-label {
+    flex-grow: 1;
+    padding: 10px 10px 10px 15px;
+}
+.lancamento-valor {
+    text-align: right;
+    padding: 10px 15px 10px 10px;
+    white-space: nowrap;
+}
+.lancamento-check {
+    align-items: center;
+    border-left: 1px solid #ddd;
+    cursor: pointer;
+    display: flex;
+    padding: 10px;
+}
+.lancamento-check [type="checkbox"]+span:not(.lever) {
+    margin: -3px 0 -2px 0;
+}
+.lancamento-check [type="checkbox"]+span:not(.lever):before,
+.lancamento-check [type="checkbox"]:not(.filled-in)+span:not(.lever):after {
+    border-color: #aaa;
+    /*border-top-width: 0;
+    height: 2px;
+    top: 9px;
+    width: 20px;*/
+}
+.lancamento-check [type="checkbox"]:checked+span:not(.lever):before {
+    top: -4px;
+    left: -5px;
+    width: 12px;
+    height: 22px;
+    border-top: 3px solid transparent;
+    border-left: 3px solid transparent;
+    border-right: 3px solid #26a69a;
+    border-bottom: 3px solid #26a69a;
+    -webkit-transform: rotate(40deg);
+    transform: rotate(40deg);
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
+    -webkit-transform-origin: 100% 100%;
+    transform-origin: 100% 100%;
+}
+
+.lancamentos-saldo {
+    border-bottom: 1px solid #ddd;
+    display: flex;
+    margin: 0;
+    padding: 10px 15px;
+}
+.lancamentos-saldo span {
+    flex-grow: 1;
+    text-align: center;
+}
+.lancamentos-saldo span strong {
+    display: block;
+}
+
+
+
+
+
+
+
+
