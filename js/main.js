@@ -16,7 +16,7 @@ $(document).ready(function(){
     }
     $('.datepicker').datepicker(options);
     
-    $('select').formSelect();
+    //$('select').formSelect();
     
     $('.money').mask("#.##0,00", {reverse: true});
 
