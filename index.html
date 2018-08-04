@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="pt-br">
+<html lang="pt-br" ng-app="yenom">
     <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>MyMoney</title>
+        <title>Yenom - Contas a Pagar e Receber</title>
         
         <!-- CSS -->
         <link rel="stylesheet" href="vendor/iconfont/material-icons.css">
@@ -24,180 +24,35 @@
             <div class="navbar-fixed">
                 <nav class="light-blue darken-4">
                     <div class="nav-wrapper">
-                        <a href="#" class="brand-logo"><img src="images/logo-white.png" alt="MyMoney"></a>
-                        <a href="#" data-target="mobile-nav" class="sidenav-trigger"><i class="material-icons">menu</i></a>
+                        <a href="#!/" class="brand-logo"><img src="images/logo-white.png" alt="Yenom"></a>
+                        <a href="javascript:void(0);" data-target="mobile-nav" class="sidenav-trigger"><i class="material-icons">menu</i></a>
                     </div>
                 </nav>
             </div>
             <ul class="sidenav" id="mobile-nav">
-                <li><a href="index.html"><i class="material-icons">playlist_play</i>Extrato</a></li>
-                <li><a href="novo-lancamento.html"><i class="material-icons">add_circle_outline</i>Novo Lançamento</a></li>
+                <li><a href="#!/"><i class="material-icons">playlist_play</i>Extrato</a></li>
+                <li><a href="#!novo-lancamento"><i class="material-icons">add_circle_outline</i>Novo Lançamento</a></li>
+                <li><a href="#!previsao-tempo"><i class="material-icons">add_circle_outline</i>Previsão do Tempo</a></li>
 <!--                <li><a href="badges.html"><i class="material-icons">attach_money</i>Carteiras</a></li>-->
             </ul>
         </header>
 
         <main>
-            <section class="section-lancamentos">
-                <header>
-                    <a href=""><i class="material-icons" title="Mês anterior">arrow_back</i></a>
-                    <h1>Setembro / 2018</h1>
-                    <a href=""><i class="material-icons" title="Próximo mês">arrow_forward</i></a>
-                </header>
-                <div class="lancamentos-saldo">
-                    <table>
-                        <thead>
-                            <tr>
-                                <th>&nbsp;</th>
-                                <td>Débitos:</td>
-                                <td>Créditos:</td>
-                                <td>Saldo:</td>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <th>Previsto:</th>
-                                <td><strong class="red-text">R$ 0</strong></td>
-                                <td><strong class="green-text">R$ 3.500,00</strong></td>
-                                <td><strong class="green-text">R$ 1.500,00</strong></td>
-                            </tr>
-                            <tr>
-                                <th>Realizado:</th>
-                                <td><strong class="red-text">R$ -1.500,00</strong></td>
-                                <td><strong class="green-text">R$ 00</strong></td>
-                                <td><strong class="green-text">R$ 1.500,00</strong></td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
-                <div class="lancamentos-controles">
-                    <h2>Lançamentos:</h2>
-                    <a class="waves-effect waves-light modal-trigger" href="#modal1"><i class="material-icons">filter_list</i></a>
-                </div>
-                <ul>
-                    <li>
-                        <p class="lancamento-realizado">
-                            <span class="lancamento-label">
-                                Salário<br>
-                                <small>Mensal</small>
-                            </span>
-                            <span class="lancamento-valor">
-                                <strong class="green-text">R$ 3.000,00</strong><br>
-                                <small>7/07/2018</small>
-                           </span>
-                            <label class="lancamento-check"><input type="checkbox" checked="checked" /><span></span></label>
-                        </p>
-                    </li>
-                    <li>
-                        <p>
-                            <span class="lancamento-label">
-                                Alguel<br>
-                                <small>Mensal</small>
-                            </span>
-                            <span class="lancamento-valor">
-                                <strong class="red-text">R$ -1.000,00</strong><br>
-                                <small class="red-text">12/07/2018</small>
-                            </span>
-                            <label class="lancamento-check"><input type="checkbox" /><span></span></label>
-                        </p>
-                    </li>
-                    <li>
-                        <p>
-                            <span class="lancamento-label">
-                                Condomínio<br>
-                                <small>Mensal</small>
-                            </span>
-                            <span class="lancamento-valor">
-                                <strong class="red-text">R$ -500,00</strong><br>
-                                <small><strong class="blue-text">20/07/2018</strong></small>
-                            </span>
-                            <label class="lancamento-check"><input type="checkbox" /><span></span></label>
-                        </p>
-                    </li>
-                    <li>
-                        <p class="lancamento-incompleto">
-                            <span class="lancamento-label">
-                                Luz<br>
-                                <small>Mensal</small>
-                            </span>
-                            <span class="lancamento-valor">
-                                <a href="" title="Lançar Valor"><i class="material-icons tiny">edit</i></a><br>
-                                <small><strong class="blue-text">20/07/2018</strong></small>
-                            </span>
-                            <label class="lancamento-check"><input type="checkbox" disabled /><span></span></label>
-                        </p>
-                    </li>
-                    <li>
-                        <p>
-                            <span class="lancamento-label">
-                                Celular<br>
-                                <small>3 / 10</small>
-                            </span>
-                            <span class="lancamento-valor">
-                                <strong class="red-text">R$ -100,00</strong><br>
-                                <small>27/07/2018</small>
-                            </span>
-                            <label class="lancamento-check"><input type="checkbox" /><span></span></label>
-                        </p>
-                    </li>
-                    <li>
-                        <p>
-                            <span class="lancamento-label">
-                                Happy Hour<br>
-                                <small></small>
-                            </span>
-                            <span class="lancamento-valor">
-                                <strong class="red-text">R$ -30,00</strong><br>
-                                <small>28/07/2018</small>
-                            </span>
-                            <label class="lancamento-check"><input type="checkbox" /><span></span></label>
-                        </p>
-                    </li>
-                </ul>
-            </section>
+            <ng-view></ng-view>
         </main>
         
 <!--        <a class="btn-floating btn-large waves-effect waves-light red"><i class="material-icons">add</i></a>-->
        
-        <!-- Modal Structure -->
-        <div id="modal1" class="modal">
-            <div class="modal-content">
-                <h4>Filtrar:</h4>
-                
-                <form class="col s12">
-                    <div class="row">
-                        <div class="input-field col s12">
-                            <span>Todos Pendentes:</span>
-                            <div class="switch">
-                                <label>
-                                    Não
-                                    <input type="checkbox">
-                                    <span class="lever"></span>
-                                    Sim
-                                </label>
-                            </div>
-                        </div>
-                        <div class="input-field col s12">
-                            <span>Apenas Pendentes:</span>
-                            <div class="switch">
-                                <label>
-                                    Não
-                                    <input type="checkbox">
-                                    <span class="lever"></span>
-                                    Sim
-                                </label>
-                            </div>
-                        </div>
-                    </div>
-                </form>
-            </div>
-            <div class="modal-footer">
-                <a href="#!" class="modal-close waves-effect waves-green btn-flat">OK</a>
-            </div>
-        </div>
         
         <!-- JavaScripts -->
         <script src="vendor/jquery/jquery-3.3.1.min.js"></script>
+        <script src="vendor/jquery-mask-plugin/jquery.mask.min.js"></script>
+        <script src="vendor/moment/moment-with-locales.min.js"></script>
         <script src="vendor/materialize/js/materialize.min.js"></script>
+        <script src="vendor/angularjs/angular.min.js"></script>
+        <script src="vendor/angularjs/angular-route.min.js"></script>
+        <script src="vendor/angularjs/angular-locale_pt-br.js"></script>
+        <script src="vendor/angularjs/angular-sanitize.min.js"></script>
         <script src="js/main.js"></script>
     </body>
 </html>

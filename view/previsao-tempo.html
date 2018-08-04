@@ -1,0 +1,24 @@
+<section class="section-novo-lancamentos container" ng-controller="previsao-tempo">
+    <header>
+        <h1>Previsão do Tempo</h1>
+    </header>
+    
+    <div class="row">
+        <div class="col12">
+            <label>Estado:</label>
+            <select class="browser-default" ng-model="estado">
+                <option value="" ng-repeat="estado in estados" ng-value="estado.id">{{ estado.nome }}</option>
+            </select>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col12">
+            <label>Cidade:</label>
+            <select class="browser-default" ng-model="cidade">
+                <option value="" ng-repeat="cidade in cidades" ng-value="cidade.id">{{ cidade.nome }}</option>
+            </select>
+        </div>
+    </div>
+    
+    <p>Previsão para a cidade de {{ getCidade() }} / {{ getEstado() }}:</p>
+</section>

@@ -1,0 +1,178 @@
+<section class="section-lancamentos" ng-controller="extrato">
+    <header>
+        <a href="javascript:void(0);" ng-click="prevMonth()" title="Mês Anterior"><i class="material-icons" title="Mês anterior">arrow_back</i></a>
+        <h1>{{ getActiveMonth() }}</h1>
+        <a href="javascript:void(0);" ng-click="nextMonth()" title="Próximo Mês"><i class="material-icons" title="Próximo mês">arrow_forward</i></a>
+    </header>
+    <div class="lancamentos-saldo">
+        <table>
+            <thead>
+                <tr>
+                    <th>&nbsp;</th>
+                    <td>Despesas:</td>
+                    <td>Receitas:</td>
+                    <td>Saldo:</td>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <th>Previsto:</th>
+                    <td><strong class="red-text">{{ previsto.despesas | currency : 'R$ ' }}</strong></td>
+                    <td><strong class="green-text">{{ previsto.receitas | currency : 'R$ ' }}</strong></td>
+                    <td><strong ng-class="{ 'green-text': previsto.saldo >= 0, 'red-text': previsto.saldo < 0 }">{{ previsto.saldo | currency : 'R$ ' }}</strong></td>
+                </tr>
+                <tr>
+                    <th>Pendente:</th>
+                    <td><strong class="red-text">{{ pendente.despesas | currency : 'R$ ' }}</strong></td>
+                    <td><strong class="green-text">{{ pendente.receitas | currency : 'R$ ' }}</strong></td>
+                    <td><strong ng-class="{ 'green-text': pendente.saldo >= 0, 'red-text': pendente.saldo < 0 }">{{ pendente.saldo | currency : 'R$ ' }}</strong></td>
+                </tr>
+                <tr>
+                    <th>Realizado:</th>
+                    <td><strong class="red-text">{{ realizado.despesas | currency : 'R$ ' }}</strong></td>
+                    <td><strong class="green-text">{{ realizado.receitas | currency : 'R$ ' }}</strong></td>
+                    <td><strong ng-class="{ 'green-text': realizado.saldo >= 0, 'red-text': realizado.saldo < 0 }">{{ realizado.saldo | currency : 'R$ ' }}</strong></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <div class="lancamentos-controles">
+        <h2>Lançamentos:</h2>
+        <a class="waves-effect waves-light modal-trigger" href="#modal1"><i class="material-icons">filter_list</i></a>
+    </div>
+    <ul>
+        <li ng-repeat="lancamento in getExtrato() | orderBy : 'vencimento_em'">
+            <p ng-class="{ 'lancamento-realizado': lancamento.realizado, 'lancamento-incompleto': lancamento.valor === null }">
+                <span class="lancamento-label">
+                    {{ lancamento.nome }}<br>
+                    <small ng-if="lancamento.frequencia == 'Parcelamento'">{{ lancamento.parcelamento.parcela }} / {{ lancamento.parcelamento.de }}</small>
+                    <small ng-if="lancamento.frequencia == 'Recorrente'">{{ lancamento.recorrencia }}</small>
+                </span>
+                <span class="lancamento-valor">
+                    <strong ng-if="lancamento.valor !== null" ng-class="{ 'red-text': lancamento.valor < 0, 'green-text': lancamento.valor >= 0 }">{{ lancamento.valor | currency : 'R$ ' }}</strong>
+                    <a ng-if="lancamento.valor === null" href="javascript:void(0);" title="Lançar Valor"><i class="material-icons tiny">edit</i></a>
+                    <br>
+                    <small ng-class="{ 'red-text': lancamento.vencimento_em.isBefore(today), 'blue-text': lancamento.vencimento_em.isSame(today) }">{{ lancamento.vencimento_em.format('DD/MM/YYYY') }}</small>
+                </span>
+                <label class="lancamento-check"><input type="checkbox" ng-model="lancamento.realizado" ng-disabled="lancamento.valor === null" /><span></span></label>
+            </p>
+        </li>
+<!--
+        <li>
+            <p class="lancamento-realizado">
+                <span class="lancamento-label">
+                    Salário<br>
+                    <small>Mensal</small>
+                </span>
+                <span class="lancamento-valor">
+                    <strong class="green-text">R$ 3.000,00</strong><br>
+                    <small>7/07/2018</small>
+               </span>
+                <label class="lancamento-check"><input type="checkbox" checked="checked" /><span></span></label>
+            </p>
+        </li>
+        <li>
+            <p>
+                <span class="lancamento-label">
+                    Alguel<br>
+                    <small>Mensal</small>
+                </span>
+                <span class="lancamento-valor">
+                    <strong class="red-text">R$ -1.000,00</strong><br>
+                    <small class="red-text">12/07/2018</small>
+                </span>
+                <label class="lancamento-check"><input type="checkbox" /><span></span></label>
+            </p>
+        </li>
+        <li>
+            <p>
+                <span class="lancamento-label">
+                    Condomínio<br>
+                    <small>Mensal</small>
+                </span>
+                <span class="lancamento-valor">
+                    <strong class="red-text">R$ -500,00</strong><br>
+                    <small><strong class="blue-text">20/07/2018</strong></small>
+                </span>
+                <label class="lancamento-check"><input type="checkbox" /><span></span></label>
+            </p>
+        </li>
+        <li>
+            <p class="lancamento-incompleto">
+                <span class="lancamento-label">
+                    Luz<br>
+                    <small>Mensal</small>
+                </span>
+                <span class="lancamento-valor">
+                    <a href="" title="Lançar Valor"><i class="material-icons tiny">edit</i></a><br>
+                    <small><strong class="blue-text">20/07/2018</strong></small>
+                </span>
+                <label class="lancamento-check"><input type="checkbox" disabled /><span></span></label>
+            </p>
+        </li>
+        <li>
+            <p>
+                <span class="lancamento-label">
+                    Celular<br>
+                    <small>3 / 10</small>
+                </span>
+                <span class="lancamento-valor">
+                    <strong class="red-text">R$ -100,00</strong><br>
+                    <small>27/07/2018</small>
+                </span>
+                <label class="lancamento-check"><input type="checkbox" /><span></span></label>
+            </p>
+        </li>
+        <li>
+            <p>
+                <span class="lancamento-label">
+                    Happy Hour<br>
+                    <small></small>
+                </span>
+                <span class="lancamento-valor">
+                    <strong class="red-text">R$ -30,00</strong><br>
+                    <small>28/07/2018</small>
+                </span>
+                <label class="lancamento-check"><input type="checkbox" /><span></span></label>
+            </p>
+        </li>
+-->
+    </ul>
+
+    <!-- Modal Structure -->
+    <div id="modal1" class="modal">
+        <div class="modal-content">
+            <h4>Filtrar:</h4>
+
+            <form class="col s12">
+                <div class="row">
+                    <div class="input-field col s12">
+                        <span>Todos Pendentes:</span>
+                        <div class="switch">
+                            <label>
+                                Não
+                                <input type="checkbox" ng-model="todosPendentes">
+                                <span class="lever"></span>
+                                Sim
+                            </label>
+                        </div>
+                    </div>
+                    <div class="input-field col s12">
+                        <span>Apenas Pendentes:</span>
+                        <div class="switch">
+                            <label>
+                                Não
+                                <input type="checkbox" ng-model="apenasPendentes">
+                                <span class="lever"></span>
+                                Sim
+                            </label>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+        <div class="modal-footer">
+            <a href="#!" class="modal-close waves-effect waves-green btn-flat">OK</a>
+        </div>
+    </div>
+</section>

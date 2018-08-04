@@ -1,0 +1,120 @@
+<section class="section-novo-lancamentos container" ng-controller="novo-lancamento">
+    <header>
+        <h1>Novo Lançamento</h1>
+    </header>
+    <form>
+        <div class="row">
+            <div class="inline-radiochecks col s12">
+                <label>Tipo de Lançamento</label>
+                <div>
+                    <label>
+                        <input class="with-gap" name="tipo_lancamento" type="radio" checked />
+                        <span>Despesa</span>
+                    </label>
+                    <label>
+                        <input class="with-gap" name="tipo_lancamento" type="radio" />
+                        <span>Receita</span>
+                    </label>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="input-field col s12">
+                <input id="valor" placeholder="0,00" type="text" class="validate money">
+                <label for="valor">Valor</label>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col s12">
+                <label>Frequência</label>
+                <select class="browser-default">
+                  <option value="1">Único</option>
+                  <option value="2">Parcelamento</option>
+                  <option value="3">Recorrente</option>
+                </select>
+            </div>
+        </div>
+        <div class="row">
+            <div class="input-field col s12">
+                <input id="dt_lancamento" type="text" class="validate datepicker">
+                <label for="dt_lancamento">Data do Vencimento</label>
+            </div>
+        </div>
+        <div class="row">
+            <div class="input-field col s12">
+                <input id="last_name" placeholder="Total de Parcelas" type="number" class="validate" maxlength="3" max="999">
+                <label for="last_name">Parcelamento</label>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col s12">
+                <label>Recorrência</label>
+                <select class="browser-default">
+                  <option value="1">Mensal</option>
+                  <option value="2">Semanal</option>
+                  <option value="3">Diário</option>
+                </select>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col s12">
+                <label>Dia do Mês</label>
+                <select class="browser-default">
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="5">4</option>
+                    <option value="5">5</option>
+                    <option value="6">6</option>
+                    <option value="7">7</option>
+                    <option value="8">8</option>
+                    <option value="9">9</option>
+                    <option value="10">10</option>
+                    <option value="11">11</option>
+                    <option value="12">12</option>
+                    <option value="13">13</option>
+                    <option value="15">14</option>
+                    <option value="15">15</option>
+                    <option value="16">16</option>
+                    <option value="17">17</option>
+                    <option value="18">18</option>
+                    <option value="19">19</option>
+                    <option value="20">20</option>
+                    <option value="21">21</option>
+                    <option value="22">22</option>
+                    <option value="23">23</option>
+                    <option value="25">24</option>
+                    <option value="25">25</option>
+                    <option value="26">26</option>
+                    <option value="27">27</option>
+                    <option value="28">28</option>
+                    <option value="29">29</option>
+                    <option value="30">30</option>
+                    <option value="31">31</option>
+                </select>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col s12">
+                <label>Dia da Semana</label>
+                <select class="browser-default">
+                    <option value="1">Domingo</option>
+                    <option value="2">Segunda</option>
+                    <option value="3">Terça</option>
+                    <option value="4">Quarta</option>
+                    <option value="5">Quinta</option>
+                    <option value="6">Sexta</option>
+                    <option value="7">Sábado</option>
+                </select>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col s12">
+                <button class="btn waves-effect waves-light" type="submit" name="action">
+                    Salvar
+                    <i class="material-icons left">save</i>
+                </button>
+            </div>
+        </div>
+    </form>
+</section>
