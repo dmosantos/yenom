@@ -9,6 +9,9 @@
     <description>Controle de contas a pagar e a receber</description>
     <author href="http://diegomarques.eti.br" email="dmosantos@gmail.com">Diego Marques</author>
     <icon src="icon.png" />
+    
+    <access origin="*" launch-external="yes" />
+    <plugin name="cordova-plugin-whitelist" source="npm" version="1" />
 
     <preference name="orientation" value="portrait" />
     <preference name="fullscreen" value="true" />
