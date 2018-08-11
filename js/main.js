@@ -3,23 +3,7 @@ function l(x) { console.log(x); }
 
 /* jQuery */
 $(document).ready(function(){
-    $('.modal').modal();
     
-    var datepicker_pt_br = {
-        today: 'Hoje', clear: 'Limpar', done: 'Ok', cancel: 'Cancelar', nextMonth: 'Próximo mês', previousMonth: 'Mês anterior', weekdaysAbbrev: ['D', 'S', 'T', 'Q', 'Q', 'S', 'S'], weekdaysShort: ['Dom', 'Seg', 'Ter', 'Qua', 'Qui', 'Sex', 'Sáb'], weekdays: ['Domingo', 'Segunda-Feira', 'Terça-Feira', 'Quarta-Feira', 'Quinta-Feira', 'Sexta-Feira', 'Sábado'], monthsShort: ['Jan', 'Fev', 'Mar', 'Abr', 'Mai', 'Jun', 'Jul', 'Ago', 'Set', 'Out', 'Nov', 'Dez'], months: ['Janeiro', 'Fevereiro', 'Março', 'Abril', 'Maio', 'Junho', 'Julho', 'Agosto', 'Setembro', 'Outubro', 'Novembro', 'Dezembro']
-    }
-    var options = {
-        autoClose: true,
-        format: 'dd/mm/yyyy',
-        defaultDate: new Date(),
-        setDefaultDate: true,
-        i18n: datepicker_pt_br
-    }
-    $('.datepicker').datepicker(options);
-    
-    //$('select').formSelect();
-    
-    $('.money').mask("#.##0,00", {reverse: true});
 
 });
 
@@ -55,8 +39,27 @@ app.config(function($routeProvider) {
 
 app.run(function($rootScope) {
     $rootScope.$on("$locationChangeStart", function(event, next, current) { 
-        l('route change');
         $('.sidenav').sidenav('close');
+    });
+    $rootScope.$on("$locationChangeSuccess", function(event, next, current) { 
+        $('.modal').modal();
+    
+        var datepicker_pt_br = {
+            today: 'Hoje', clear: 'Limpar', done: 'Ok', cancel: 'Cancelar', nextMonth: 'Próximo mês', previousMonth: 'Mês anterior', weekdaysAbbrev: ['D', 'S', 'T', 'Q', 'Q', 'S', 'S'], weekdaysShort: ['Dom', 'Seg', 'Ter', 'Qua', 'Qui', 'Sex', 'Sáb'], weekdays: ['Domingo', 'Segunda-Feira', 'Terça-Feira', 'Quarta-Feira', 'Quinta-Feira', 'Sexta-Feira', 'Sábado'], monthsShort: ['Jan', 'Fev', 'Mar', 'Abr', 'Mai', 'Jun', 'Jul', 'Ago', 'Set', 'Out', 'Nov', 'Dez'], months: ['Janeiro', 'Fevereiro', 'Março', 'Abril', 'Maio', 'Junho', 'Julho', 'Agosto', 'Setembro', 'Outubro', 'Novembro', 'Dezembro']
+        }
+        var options = {
+            autoClose: true,
+            format: 'dd/mm/yyyy',
+            defaultDate: new Date(),
+            setDefaultDate: true,
+            i18n: datepicker_pt_br
+        }
+
+        $('.datepicker').datepicker(options);
+
+        //$('select').formSelect();
+
+        $('.money').mask("#.##0,00", {reverse: true});
     });
 });
 
@@ -70,7 +73,8 @@ app.controller('extrato', function($scope) {
     $scope.pendente = null;
     $scope.realizado = null;
     
-    $scope.data = [
+    $scope.data = localStorage.data || [];
+    /*[
         {
             incluido_em: moment(),
             nome: 'Aluguel',
@@ -154,7 +158,7 @@ app.controller('extrato', function($scope) {
             dia_semana: null,
             realizado: false
         }
-    ];
+    ];*/
     
     $scope.getActiveMonth = function() {
         return $scope.activeMonth.format('MMMM / YYYY');
@@ -225,6 +229,23 @@ app.controller('extrato', function($scope) {
         $scope.realizado.saldo = $scope.realizado.receitas + $scope.realizado.despesas;
         
         return filteredData;
+    }
+});
+
+app.controller('novo-lancamento', function($scope) {
+    $scope.registro = {
+        incluido_em: moment(),
+        nome: null,
+        descricao: null,
+        tipo: 'Despesa',
+        valor: null,
+        frequencia: 'Único',
+        vencimento_em: moment([2018, 8, 3]).startOf('day'),
+        parcelamento: null,
+        recorrencia: null,
+        dia_mes: null,
+        dia_semana: null,
+        realizado: false
     }
 });
 

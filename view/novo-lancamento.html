@@ -2,17 +2,18 @@
     <header>
         <h1>Novo Lançamento</h1>
     </header>
+    <pre>{{ registro | json }}</pre>
     <form>
         <div class="row">
             <div class="inline-radiochecks col s12">
                 <label>Tipo de Lançamento</label>
                 <div>
                     <label>
-                        <input class="with-gap" name="tipo_lancamento" type="radio" checked />
+                        <input class="with-gap" name="tipo_lancamento" ng-model="registro.tipo" type="radio" value="Despesa" checked />
                         <span>Despesa</span>
                     </label>
                     <label>
-                        <input class="with-gap" name="tipo_lancamento" type="radio" />
+                        <input class="with-gap" name="tipo_lancamento" ng-model="registro.tipo" type="radio" value="Receita" />
                         <span>Receita</span>
                     </label>
                 </div>
@@ -20,23 +21,23 @@
         </div>
         <div class="row">
             <div class="input-field col s12">
-                <input id="valor" placeholder="0,00" type="text" class="validate money">
+                <input id="valor" ng-model="registro.valor" placeholder="0,00" type="text" class="validate money">
                 <label for="valor">Valor</label>
             </div>
         </div>
         <div class="row">
             <div class="col s12">
                 <label>Frequência</label>
-                <select class="browser-default">
-                  <option value="1">Único</option>
-                  <option value="2">Parcelamento</option>
-                  <option value="3">Recorrente</option>
+                <select class="browser-default" ng-model="registro.frequencia">
+                  <option value="Único">Único</option>
+                  <option value="Parcelamento">Parcelamento</option>
+                  <option value="Recorrente">Recorrente</option>
                 </select>
             </div>
         </div>
         <div class="row">
             <div class="input-field col s12">
-                <input id="dt_lancamento" type="text" class="validate datepicker">
+                <input id="dt_lancamento" type="text" class="validate datepicker" ng-model="registro.vencimento_em">
                 <label for="dt_lancamento">Data do Vencimento</label>
             </div>
         </div>
